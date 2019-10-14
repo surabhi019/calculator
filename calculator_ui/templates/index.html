@@ -1,0 +1,47 @@
+Result: {{result}} <br/>
+
+<form action="" method="POST">
+{{ form }}
+    {% csrf_token %}
+    <input type="submit" value="Calculate" />
+</form>
+    <input type="button" value="1" onclick="add_to_string(1)"/>
+    <input type="button" value="2"  onclick="add_to_string(2)"/>
+    <input type="button" value="3" onclick="add_to_string(3)" />
+    <br/>
+    <input type="button" value="4" onclick="add_to_string(4)"/>
+    <input type="button" value="5" onclick="add_to_string(5)" />
+    <input type="button" value="6" onclick="add_to_string(6)"/>
+    <br/>
+    <input type="button" value="7"onclick="add_to_string(7)" />
+    <input type="button" value="8" onclick="add_to_string(8)" />
+    <input type="button" value="9" onclick="add_to_string(9)"/>
+    <br/>
+    <input type="button" value="" style="visibility: hidden" />
+    <input type="button" value="0"  onclick="add_to_string(0)"/>
+    <br/>
+    <input type="button" value="+" onclick="add_to_string('+')" />
+    <input type="button" value="-" onclick="add_to_string('-')" />
+    <br/>
+    <input type="button" value="/" onclick="add_to_string('/')" />
+    <input type="button" value="*" onclick="add_to_string('*')" />
+    <br/>
+    <input type="button" value="CLEAR ONE" onclick="add_to_string('clear_one')" />
+    <input type="button" value="CLEAR ALL" onclick="add_to_string('clear_all')" />
+
+<script>
+var calculation_string = "";
+    {% comment %} document.getElementById("id_calculation_string").disabled = true; {% endcomment %}
+    function add_to_string(val) {
+        if(val == "clear_one") {
+            calculation_string = calculation_string.substring(0, calculation_string.length - 1);
+        }
+        else if(val == "clear_all") {
+            calculation_string = "";
+        }
+        else {
+            calculation_string += val;
+        }
+        document.getElementById("id_calculation_string").value = calculation_string;
+    }
+</script>
